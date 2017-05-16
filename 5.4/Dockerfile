@@ -8,7 +8,9 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
     && gpg --verify /usr/local/bin/gosu.asc \
     && rm /usr/local/bin/gosu.asc \
     && rm -r /root/.gnupg/ \
-    && chmod +x /usr/local/bin/gosu
+    && chmod +x /usr/local/bin/gosu \
+    && elasticsearch-plugin remove x-pack \
+    && rm -rf /usr/share/elasticsearch/config/x-pack
 
 COPY docker-entrypoint.sh /
 
