@@ -12,7 +12,7 @@ max_try=$2
 wait_seconds=$3
 
 for i in $(seq 1 "${max_try}"); do
-    if curl -s "${host}:9200" &> /dev/null; then
+    if curl "${host}:9200"; then
         started=1
         break
     fi
