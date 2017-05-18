@@ -10,9 +10,12 @@ started=0
 host=$1
 max_try=$2
 wait_seconds=$3
+delay_seconds=$4
+
+sleep "${delay_seconds}"
 
 for i in $(seq 1 "${max_try}"); do
-    if curl "${host}:9200"; then
+    if curl -s "${host}:9200" &> /dev/null; then
         started=1
         break
     fi

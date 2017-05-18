@@ -21,13 +21,14 @@ default params values:
     host localhost
     max_try 1
     wait_seconds 1
+    delay_seconds 1
 ```
 
 Examples:
 
 ```bash
 # Wait for Elasticsearch to start
-docker exec -ti [ID] make check-ready max_try=10 wait_seconds=10 -f /usr/local/bin/actions.mk
+docker exec -ti [ID] make check-ready max_try=5 wait_seconds=10 delay_seconds=20 -f /usr/local/bin/actions.mk
 ```
 
 ## Using in production

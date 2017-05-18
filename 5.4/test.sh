@@ -6,16 +6,18 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
+if [[ -n "${TRAVIS}" ]]; then
+    sysctl -w vm.max_map_count=262144
+fi
+
 name=$1
 image=$2
 
-docker run --name "${name}" "${image}"
-#cid="$(docker run -d --name "${name}" "${image}")"
-#trap "docker rm -vf $cid > /dev/null" EXIT
-#
-#elasticsearch() {
-#	docker run --rm -i --link "${name}":"elasticsearch" "${image}" "${@}" host="elasticsearch"
-#}
-#
-#elasticsearch make check-ready wait_seconds=10 max_try=12
+cid="$(docker run -d --name "${name}" "${image}")"
+trap "docker rm -vf $cid > /dev/null" EXIT
 
+elasticsearch() {
+	docker run --rm -i --link "${name}":"elasticsearch" "${image}" "${@}" host="elasticsearch"
+}
+
+elasticsearch make check-ready wait_seconds=5 max_try=12 delay_seconds=20
