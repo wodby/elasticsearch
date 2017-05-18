@@ -2,9 +2,9 @@
 
 set -e
 
-#if [[ -n "${DEBUG}" ]]; then
+if [[ -n "${DEBUG}" ]]; then
     set -x
-#fi
+fi
 
 if [[ -n "${TRAVIS}" ]]; then
     sudo sysctl -w vm.max_map_count=262144
