@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/wodby/elasticsearch.svg?branch=master)](https://travis-ci.org/wodby/elasticsearch)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
+[![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Supported tags and respective `Dockerfile` links:
 
@@ -15,13 +16,13 @@ Usage:
 make COMMAND [params ...]
 
 commands:
-    check-ready [host max_try wait_seconds]
+    check-ready [host max_try wait_seconds delay_seconds]
  
 default params values:
     host localhost
     max_try 1
     wait_seconds 1
-    delay_seconds 1
+    delay_seconds 0
 ```
 
 Examples:
