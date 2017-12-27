@@ -1,20 +1,36 @@
-# Elasticsearch docker container image
+# Elasticsearch Docker Container Image
 
 [![Build Status](https://travis-ci.org/wodby/elasticsearch.svg?branch=master)](https://travis-ci.org/wodby/elasticsearch)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
+[![Docker Layers](https://images.microbadger.com/badges/image/wodby/elasticsearch.svg)](https://microbadger.com/images/wodby/elasticsearch)
 [![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
-## Supported tags and respective `Dockerfile` links:
+## Docker Images
 
-- [`5.4`, `latest` (*5.4/Dockerfile*)](https://github.com/wodby/elasticsearch/tree/master/5.4/Dockerfile)
+* All images are based on Alpine Linux
+* Base image: [wodby/alpine](https://github.com/wodby/openjdk)
+* [TravisCI builds](https://travis-ci.org/wodby/elasticsearch) 
+* [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
 
-## Actions
+Supported tags and respective `Dockerfile` links:
+
+* `6`, `6.1`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `6.0` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `5.6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `5.5` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `5.4` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+
+For better reliability we additionally release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We **strongly recommend** using images only with stability tags. 
+
+## Environment Variables
+
+## Orchestration Actions
 
 Usage:
 ```
 make COMMAND [params ...]
-
+ 
 commands:
     check-ready [host max_try wait_seconds delay_seconds]
  
@@ -25,13 +41,6 @@ default params values:
     delay_seconds 0
 ```
 
-Examples:
-
-```bash
-# Wait for Elasticsearch to start
-docker exec -ti [ID] make check-ready max_try=5 wait_seconds=10 delay_seconds=20 -f /usr/local/bin/actions.mk
-```
-
-## Using in production
+## Deployment
 
 Deploy Elasticsearch container to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).

@@ -10,14 +10,11 @@ if [[ -n "${TRAVIS}" ]]; then
     sudo sysctl -w vm.max_map_count=262144
 fi
 
-name=$1
-image=$2
-
-cid="$(docker run -d --name "${name}" "${image}")"
+cid="$(docker run -d --name "${NAME}" "${IMAGE}")"
 trap "docker rm -vf $cid > /dev/null" EXIT
 
 elasticsearch() {
-	docker run --rm -i --link "${name}":"elasticsearch" "${image}" "${@}" host="elasticsearch"
+	docker run --rm -i --link "${NAME}":"elasticsearch" "${IMAGE}" "${@}" host="elasticsearch"
 }
 
 elasticsearch make check-ready wait_seconds=5 max_try=12 delay_seconds=20
