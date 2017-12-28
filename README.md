@@ -9,7 +9,7 @@
 ## Docker Images
 
 * All images are based on Alpine Linux
-* Base image: [wodby/alpine](https://github.com/wodby/openjdk)
+* Base image: [wodby/openjdk](https://github.com/wodby/openjdk)
 * [TravisCI builds](https://travis-ci.org/wodby/elasticsearch) 
 * [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
 
@@ -24,6 +24,24 @@ Supported tags and respective `Dockerfile` links:
 For better reliability we additionally release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We **strongly recommend** using images only with stability tags. 
 
 ## Environment Variables
+
+| Variable                          | Default Value           | Description |
+| --------------------------------- | ----------------------- | ----------- |
+| `ES_JAVA_OPTS`                    | `-Xms1g -Xmx1g`         |             |
+| `CLUSTER_NAME`                    | `elasticsearch-default` |             |
+| `NODE_MASTER`                     | `true`                  |             |
+| `NODE_DATA`                       | `true`                  |             |
+| `NODE_INGEST`                     | `true`                  |             |
+| `HTTP_ENABLE`                     | `true`                  |             |
+| `NETWORK_HOST`                    | `_site_`                |             |
+| `HTTP_CORS_ENABLE`                | `true`                  |             |
+| `HTTP_CORS_ALLOW_ORIGIN`          | `*`                     |             |
+| `NUMBER_OF_MASTERS`               | `1`                     |             |
+| `MAX_LOCAL_STORAGE_NODES`         | `1`                     |             |
+| `SHARD_ALLOCATION_AWARENESS`      |                         |             |
+| `SHARD_ALLOCATION_AWARENESS_ATTR` |                         |             |
+| `MEMORY_LOCK`                     | `true`                  |             |
+| `ELASTIC_CONTAINER`               | `true`                  |             |
 
 ## Orchestration Actions
 
