@@ -1,4 +1,4 @@
-FROM wodby/openjdk:8
+FROM wodby/openjdk:8-0.1.0
 
 ARG ES_VER
 
