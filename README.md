@@ -25,23 +25,23 @@ For better reliability we additionally release images with stability tags (`wodb
 
 ## Environment Variables
 
-| Variable                          | Default Value           | Description |
-| --------------------------------- | ----------------------- | ----------- |
-| `ES_JAVA_OPTS`                    | `-Xms1g -Xmx1g`         |             |
-| `CLUSTER_NAME`                    | `elasticsearch-default` |             |
-| `NODE_MASTER`                     | `true`                  |             |
-| `NODE_DATA`                       | `true`                  |             |
-| `NODE_INGEST`                     | `true`                  |             |
-| `HTTP_ENABLE`                     | `true`                  |             |
-| `NETWORK_HOST`                    | `_site_`                |             |
-| `HTTP_CORS_ENABLE`                | `true`                  |             |
-| `HTTP_CORS_ALLOW_ORIGIN`          | `*`                     |             |
-| `NUMBER_OF_MASTERS`               | `1`                     |             |
-| `MAX_LOCAL_STORAGE_NODES`         | `1`                     |             |
-| `SHARD_ALLOCATION_AWARENESS`      |                         |             |
-| `SHARD_ALLOCATION_AWARENESS_ATTR` |                         |             |
-| `MEMORY_LOCK`                     | `true`                  |             |
-| `ELASTIC_CONTAINER`               | `true`                  |             |
+| Variable                                      | Default Value           | Description |
+| --------------------------------------------- | ----------------------- | ----------- |
+| `ES_JAVA_OPTS`                                | `-Xms1g -Xmx1g`         |             |
+| `ES_CLUSTER_NAME`                             | `elasticsearch-default` |             |
+| `ES_NODE_MASTER`                              | `true`                  |             |
+| `ES_NODE_DATA`                                | `true`                  |             |
+| `ES_NODE_INGEST`                              | `true`                  |             |
+| `ES_HTTP_ENABLED`                             | `true`                  |             |
+| `ES_NETWORK_HOST`                             | `0.0.0.0`               |             |
+| `ES_HTTP_CORS_ENABLED`                        | `true`                  |             |
+| `ES_HTTP_CORS_ALLOW_ORIGIN`                   | `*`                     |             |
+| `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     |             |
+| `ES_NODE_MAX_LOCAL_STORAGE_NODES`             | `1`                     |             |
+| `ES_SHARD_ALLOCATION_AWARENESS_ATTR`          |                         |             |
+| `ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH` |                         |             |
+| `ES_BOOTSTRAP_MEMORY_LOCK`                    | `true`                  |             |
+| `ELASTIC_CONTAINER`                           | `true`                  |             |
 
 ## Orchestration Actions
 
@@ -61,4 +61,4 @@ default params values:
 
 ## Deployment
 
-Deploy Elasticsearch container to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).
+Deploy Elasticsearch to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).

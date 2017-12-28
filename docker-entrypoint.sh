@@ -6,30 +6,6 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-# Files created by Elasticsearch should always be group writable too
-umask 0002
-
-# Parse Docker env vars to customize Elasticsearch
-#
-# e.g. Setting the env var cluster.name=testcluster
-#
-# will cause Elasticsearch to be invoked with -Ecluster.name=testcluster
-#
-# see https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html#_setting_default_settings
-
-declare -a es_opts
-
-while IFS='=' read -r envvar_key envvar_value
-do
-    # Elasticsearch env vars need to have at least two dot separated lowercase words, e.g. `cluster.name`
-    if [[ "$envvar_key" =~ ^[a-z_]+\.[a-z_]+ ]]; then
-        if [[ ! -z $envvar_value ]]; then
-          es_opt="-E${envvar_key}=${envvar_value}"
-          es_opts+=("${es_opt}")
-        fi
-    fi
-done < <(env)
-
 # The virtual file /proc/self/cgroup should list the current cgroup
 # membership. For each hierarchy, you can follow the cgroup path from
 # this file to the cgroup filesystem (usually /sys/fs/cgroup/) and
@@ -44,15 +20,40 @@ done < <(env)
 # will run in.
 export ES_JAVA_OPTS="-Des.cgroups.hierarchy.override=/ $ES_JAVA_OPTS"
 
+# Generate random node name if not set.
+if [[ -z "${ES_NODE_NAME}" ]]; then
+	export ES_NODE_NAME=$(uuidgen)
+fi
+
+# Fix volume permissions.
 sudo fix-permissions.sh elasticsearch elasticsearch /usr/share/elasticsearch/data
+
+# Install elasticsearch plugins.
+if [[ -n "${ES_PLUGINS_INSTALL}" ]]; then
+   orig_ifs=$IFS
+   IFS=','
+   for plugin in "${ES_PLUGINS_INSTALL}"; do
+      if ! elasticsearch-plugin list | grep -qs ${plugin}; then
+         yes | elasticsearch-plugin install --batch ${plugin}
+      fi
+   done
+   IFS="${orig_ifs}"
+fi
+
+# Get value for shard allocation awareness attributes.
+# https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-awareness.html#CO287-1
+if [[ -n "${ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH}" && -n "${ES_SHARD_ALLOCATION_AWARENESS_ATTR}" ]]; then
+    if [[ "${NODE_DATA:-true}" == "true" ]]; then
+        export ES_SHARD_ATTR=$(cat "${ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH}")
+        export ES_NODE_NAME="${ES_SHARD_ATTR}-${ES_NODE_NAME}"
+    fi
+fi
 
 gotpl /etc/gotpl/elasticsearch.yml.tpl > /usr/share/elasticsearch/config/elasticsearch.yml
 gotpl /etc/gotpl/log4j2.properties.tpl > /usr/share/elasticsearch/config/log4j2.properties
 
 if [[ "${1}" == 'make' ]]; then
     exec "${@}" -f /usr/local/bin/actions.mk
-elif [[ "${1}" == 'eswrapper' ]]; then
-    elasticsearch "${es_opts[@]}"
 else
     exec "${@}"
 fi

@@ -10,7 +10,7 @@ if [[ -n "${TRAVIS}" ]]; then
     sudo sysctl -w vm.max_map_count=262144
 fi
 
-cid="$(docker run -d --name "${NAME}" "${IMAGE}")"
+cid="$(docker run -d --name "${NAME}" --ulimit memlock=-1:-1 "${IMAGE}")"
 trap "docker rm -vf $cid > /dev/null" EXIT
 
 elasticsearch() {

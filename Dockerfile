@@ -8,20 +8,6 @@ ENV ES_VER=${ES_VER} \
     GPG_KEY="46095ACC8548582C1A2699A9D27D666CD88E42B4" \
     \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
-    CLUSTER_NAME="elasticsearch-default" \
-    NODE_MASTER="true" \
-    NODE_DATA="true" \
-    NODE_INGEST="true" \
-    HTTP_ENABLE="true" \
-    NETWORK_HOST="_site_" \
-    HTTP_CORS_ENABLE="true" \
-    HTTP_CORS_ALLOW_ORIGIN="*" \
-    NUMBER_OF_MASTERS="1" \
-    MAX_LOCAL_STORAGE_NODES="1" \
-    SHARD_ALLOCATION_AWARENESS="" \
-    SHARD_ALLOCATION_AWARENESS_ATTR="" \
-    MEMORY_LOCK="true" \
-    ELASTIC_CONTAINER="true" \
     \
     PATH="/usr/share/elasticsearch/bin:${PATH}"
 
@@ -57,7 +43,7 @@ RUN set -ex; \
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \
     \
-    chown -R elasticsearch:0 /usr/share/elasticsearch; \
+    chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
     \
     # Configure sudoers.
     echo 'elasticsearch ALL=(root) NOPASSWD: /usr/local/bin/fix-permissions.sh' > /etc/sudoers.d/elasticsearch; \
@@ -74,10 +60,11 @@ WORKDIR /usr/share/elasticsearch
 VOLUME /usr/share/elasticsearch/data
 
 COPY templates /etc/gotpl/
-COPY bin /usr/local/bin/
+COPY actions /usr/local/bin/
+COPY docker-entrypoint.sh /usr/local/bin/
 
 EXPOSE 9200 9300
 
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
-CMD ["eswrapper"]
+CMD ["elasticsearch"]
