@@ -35,7 +35,7 @@ RUN set -ex; \
     \
     # Unpack and install plugins.
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
-    tar zx elasticsearch.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
+    tar zxf elasticsearch.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \
     \
