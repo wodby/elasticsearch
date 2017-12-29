@@ -61,4 +61,4 @@ default params values:
 
 ## Deployment
 
-Deploy Elasticsearch to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com).
+Deploy Elasticsearch with Kibana to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://cloud.wodby.com/stackhub/b4d10a3f-c28f-431f-a6e6-ac0137e27097/overview).
