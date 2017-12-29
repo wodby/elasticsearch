@@ -18,15 +18,11 @@ RUN set -ex; \
     echo "PS1='\w\$ '" >> /home/elasticsearch/.bashrc; \
     \
     apk add --update --no-cache -t .es-rundeps \
-        bash \
-        ca-certificates \
-        curl \
         make \
-        su-exec \
         sudo \
         util-linux; \
     \
-    apk add --no-cache -t .es-build-deps gnupg openssl tar; \
+    apk add --no-cache -t .es-build-deps gnupg openssl; \
     \
     # Download and verify elasticsearch.
     cd /tmp; \
