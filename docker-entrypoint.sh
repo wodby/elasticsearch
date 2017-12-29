@@ -50,7 +50,6 @@ if [[ -n "${ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH}" && -n "${ES_SHARD_ALLO
 fi
 
 gotpl /etc/gotpl/elasticsearch.yml.tpl > /usr/share/elasticsearch/config/elasticsearch.yml
-gotpl /etc/gotpl/log4j2.properties.tpl > /usr/share/elasticsearch/config/log4j2.properties
 
 if [[ "${1}" == 'make' ]]; then
     exec "${@}" -f /usr/local/bin/actions.mk

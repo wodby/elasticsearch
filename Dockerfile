@@ -56,6 +56,7 @@ WORKDIR /usr/share/elasticsearch
 VOLUME /usr/share/elasticsearch/data
 
 COPY templates /etc/gotpl/
+COPY config /usr/share/elasticsearch/config/
 COPY actions /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/
 
