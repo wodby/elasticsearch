@@ -7,9 +7,9 @@ env:
   global:
     - LATEST_TAG=6.1
   matrix:
-    - TAG=6.1 ES_VER=6.1.1 EXTRA_TAG=6
+    - TAG=6.1 ES_VER=6.1.2 EXTRA_TAG=6
     - TAG=6.0 ES_VER=6.0.1
-    - TAG=5.6 ES_VER=5.6.5 EXTRA_TAG=5
+    - TAG=5.6 ES_VER=5.6.6 EXTRA_TAG=5
     - TAG=5.5 ES_VER=5.5.3
     - TAG=5.4 ES_VER=5.4.3
 

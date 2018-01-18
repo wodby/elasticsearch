@@ -1,6 +1,6 @@
 -include env_make
 
-ES_VER ?= 6.1.1
+ES_VER ?= 6.1.2
 
 # Remove minor version from tag
 TAG ?= $(shell echo "${ES_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
