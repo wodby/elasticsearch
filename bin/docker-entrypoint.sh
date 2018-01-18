@@ -6,6 +6,10 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
+if [[ "${ES_BOOTSTRAP_MEMORY_LOCK:-true}" == "true" ]]; then
+    ulimit -l unlimited
+fi
+
 # The virtual file /proc/self/cgroup should list the current cgroup
 # membership. For each hierarchy, you can follow the cgroup path from
 # this file to the cgroup filesystem (usually /sys/fs/cgroup/) and
