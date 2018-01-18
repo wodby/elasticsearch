@@ -19,7 +19,7 @@ RUN set -ex; \
     \
     apk add --update --no-cache -t .es-rundeps \
         make \
-        sudo \
+        su-exec \
         util-linux; \
     \
     apk add --no-cache -t .es-build-deps gnupg openssl; \
@@ -33,23 +33,22 @@ RUN set -ex; \
     gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
     rm -r "${GNUPGHOME}" elasticsearch.tar.gz.asc; \
     \
-    # Unpack and install plugins.
+    # Unpack elasticsearch.
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
     tar zxf elasticsearch.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
+    # Default plugins.
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \
     \
     chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
-    \
-    # Configure sudoers.
-    echo 'elasticsearch ALL=(root) NOPASSWD: /usr/local/bin/fix-permissions.sh' > /etc/sudoers.d/elasticsearch; \
     \
     # Clean up
     apk del --purge .es-build-deps; \
     rm -rf /tmp/*; \
     rm -rf /var/cache/apk/*
 
-USER 1000
+# We have to use root as default user to update ulimit.
+#USER 1000
 
 WORKDIR /usr/share/elasticsearch
 
