@@ -1,12 +1,8 @@
-FROM wodby/openjdk:8-0.1.0
+FROM wodby/openjdk:8-0.2.0
 
 ARG ES_VER
 
-ENV ES_VER=${ES_VER} \
-    ES_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VER}.tar.gz" \
-    ES_ASC_URL="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VER}.tar.gz.asc" \
-    GPG_KEY="46095ACC8548582C1A2699A9D27D666CD88E42B4" \
-    \
+ENV ES_VER="${ES_VER}" \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
     \
     PATH="/usr/share/elasticsearch/bin:${PATH}"
@@ -26,16 +22,13 @@ RUN set -ex; \
     \
     # Download and verify elasticsearch.
     cd /tmp; \
-    curl -o elasticsearch.tar.gz -Lskj "${ES_URL}"; \
-    curl -o elasticsearch.tar.gz.asc -Lskj "${ES_ASC_URL}"; \
-    export GNUPGHOME="$(mktemp -d)"; \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "${GPG_KEY}"; \
-    gpg --batch --verify elasticsearch.tar.gz.asc elasticsearch.tar.gz; \
-    rm -r "${GNUPGHOME}" elasticsearch.tar.gz.asc; \
+    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VER}.tar.gz" \
+    curl -o es.tar.gz -Lskj "${es_url}"; \
+    curl -o es.tar.gz.asc -Lskj "${es_url}.asc"; \
+    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg-verify.sh /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
     \
-    # Unpack elasticsearch.
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
-    tar zxf elasticsearch.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
+    tar zxf es.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
     # Default plugins.
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \

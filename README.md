@@ -4,9 +4,12 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/elasticsearch.svg)](https://microbadger.com/images/wodby/elasticsearch)
-[![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Docker Images
+
+!!! For better reliability we release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We **STRONGLY RECOMMEND** using images only with stability tags. 
+
+Overview:
 
 * All images are based on Alpine Linux
 * Base image: [wodby/openjdk](https://github.com/wodby/openjdk)
@@ -20,8 +23,6 @@ Supported tags and respective `Dockerfile` links:
 * `5`, `5.6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5.5` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5.4` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-
-For better reliability we additionally release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We **strongly recommend** using images only with stability tags. 
 
 ## Environment Variables
 
