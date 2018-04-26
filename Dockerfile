@@ -4,6 +4,7 @@ ARG ES_VER
 
 ENV ES_VER="${ES_VER}" \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
+    ES_TMPDIR="/tmp" \
     \
     PATH="/usr/share/elasticsearch/bin:${PATH}"
 
