@@ -5,7 +5,7 @@ services:
 
 env:
   global:
-    - LATEST_TAG=6.1
+    - LATEST_TAG=6.2
   matrix:
     - TAG=6.2 ES_VER=6.2.4 EXTRA_TAG=6
     - TAG=6.1 ES_VER=6.1.4
