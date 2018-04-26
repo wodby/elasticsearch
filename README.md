@@ -18,7 +18,8 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-* `6`, `6.1`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `6`, `6.2`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `6.1` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `6.0` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5`, `5.6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5.5` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)

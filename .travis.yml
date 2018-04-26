@@ -7,9 +7,10 @@ env:
   global:
     - LATEST_TAG=6.1
   matrix:
-    - TAG=6.1 ES_VER=6.1.2 EXTRA_TAG=6
+    - TAG=6.2 ES_VER=6.2.4 EXTRA_TAG=6
+    - TAG=6.1 ES_VER=6.1.4
     - TAG=6.0 ES_VER=6.0.1
-    - TAG=5.6 ES_VER=5.6.6 EXTRA_TAG=5
+    - TAG=5.6 ES_VER=5.6.9 EXTRA_TAG=5
     - TAG=5.5 ES_VER=5.5.3
     - TAG=5.4 ES_VER=5.4.3
 
@@ -17,10 +18,4 @@ script:
   - travis_retry make && make test
 
 after_success:
-  - ./travis-release.sh
-
-notifications:
-  on_failure: never
-  slack:
-    secure: |
-      xjc4ye28J74roIMVscCS3PCfxY2Cb88LAMGGPfe9kWDkMT5euNrO0ghq/hnuNQNxjbPLQJWwTb9hBCqFZMNGzR6AI9L9k2WEDgqzO0L31DXDeyWdOUXnWEOYy6QUbQQHrIpGo5J1O56Ea9YIIDwMtv2/GbBSPfWAW2Roow7ho3XeaGXHPcn1jo72vSQk7rUt4H1UWmu9kvFEyn5av+0Ehrja+ejeMn+pJOhROJe6+yjTIlJAaRxGaIGC40CpdHmwU43uFGL3MSuBaMy6d4NFDy4G+IWDmAWTD3yrJyyLAs+9BPnYCcCD0DLIa9apU/dq5sopwrTlHTE6IFPiK0oDfiPCfgQfeu7F9CGMZT2spb1LQ7yRbGINoc/MZFGsWgxoLcuoU4/8ao1bT0kMC0+WorQ1EtJzInX0V7qMaR/MoDp16dK5GQ60BlC8gRyJ0R/+FLbBlq9hXVXvC5fLmwIWGsE21r1d8YaScISBSUNXNOZZ2rWvRHcFbNS4LaS+7J3GtPGkaXmTrr6dL6aP0pKMoER9gIC0v3j/Q9YywP3whjQfnzJe/jWHSkN+pR3MtgU+9Xf94ofnrfiHkKk0qb0YJkaAiuDZzOUwGtB0Hh6dY9Yu87es0LLh80yfqQTcCNyBrVwT/83hQn1/WPcSc4zELpNcnu5x3fYZUBEuOZAylUc=
+  - ./release.sh
