@@ -10,7 +10,7 @@ if [[ "${ES_BOOTSTRAP_MEMORY_LOCK:-true}" == "true" ]]; then
     ulimit -l unlimited
 fi
 
-_install_plugins() {
+install_plugins() {
     if [[ -n "${ES_PLUGINS_INSTALL}" ]]; then
        orig_ifs=$IFS
        IFS=','
@@ -23,7 +23,7 @@ _install_plugins() {
     fi
 }
 
-_process_templates() {
+process_templates() {
     # Get value for shard allocation awareness attributes.
     # https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-awareness.html#CO287-1
     if [[ -n "${ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH}" && -n "${ES_SHARD_ALLOCATION_AWARENESS_ATTR}" ]]; then
@@ -33,7 +33,7 @@ _process_templates() {
         fi
     fi
 
-    gotpl /etc/gotpl/elasticsearch.yml.tpl > /usr/share/elasticsearch/config/elasticsearch.yml
+    gotpl /etc/gotpl/elasticsearch.yml.tmpl > /usr/share/elasticsearch/config/elasticsearch.yml
 }
 
 # The virtual file /proc/self/cgroup should list the current cgroup
@@ -58,8 +58,10 @@ fi
 # Fix volume permissions.
 chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/data
 
-_install_plugins
-_process_templates
+install_plugins
+process_templates
+
+exec_init_scripts
 
 if [[ "${1}" == 'make' ]]; then
     su-exec elasticsearch "${@}" -f /usr/local/bin/actions.mk

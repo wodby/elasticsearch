@@ -1,8 +1,10 @@
-FROM wodby/openjdk:8-0.2.0
+ARG OPENJDK_VER
 
-ARG ES_VER
+FROM wodby/openjdk:${OPENJDK_VER}-jre
 
-ENV ES_VER="${ES_VER}" \
+ARG ELASTICSEARCH_VER
+
+ENV ELASTICSEARCH_VER="${ELASTICSEARCH_VER}" \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
     ES_TMPDIR="/tmp" \
     \
@@ -21,22 +23,21 @@ RUN set -ex; \
     \
     apk add --no-cache -t .es-build-deps gnupg openssl; \
     \
-    # Download and verify elasticsearch.
     cd /tmp; \
-    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ES_VER}.tar.gz"; \
+    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VER}.tar.gz"; \
     curl -o es.tar.gz -Lskj "${es_url}"; \
     curl -o es.tar.gz.asc -Lskj "${es_url}.asc"; \
-    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg-verify.sh /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
+    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
     \
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
     tar zxf es.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
     # Default plugins.
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \
+    rm -rf /usr/share/elasticsearch/modules/x-pack; \
     \
     chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
     \
-    # Clean up
     apk del --purge .es-build-deps; \
     rm -rf /tmp/*; \
     rm -rf /var/cache/apk/*

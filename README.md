@@ -7,7 +7,7 @@
 
 ## Docker Images
 
-!!! For better reliability we release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We **STRONGLY RECOMMEND** using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/elasticsearch:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We strongly recommend using images only with stability tags. 
 
 Overview:
 
@@ -18,10 +18,11 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-* `6`, `6.2`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `6.3`, `6`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `6.2` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `6.1` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `6.0` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-* `5`, `5.6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+* `5.6`, `5` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5.5` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 * `5.4` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 
