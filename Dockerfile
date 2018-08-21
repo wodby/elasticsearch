@@ -24,7 +24,9 @@ RUN set -ex; \
     apk add --no-cache -t .es-build-deps gnupg openssl; \
     \
     cd /tmp; \
-    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VER}.tar.gz"; \
+    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-${ELASTICSEARCH_VER}.tar.gz"; \
+    # Since 6.3 elasticsearch provides a separate OSS version without x-pack.
+    [[ $(compare_semver "6.3.0" "${ELASTICSEARCH_VER}") == 0 ]] && es_url="${es_url/-oss/}"; \
     curl -o es.tar.gz -Lskj "${es_url}"; \
     curl -o es.tar.gz.asc -Lskj "${es_url}.asc"; \
     GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
@@ -34,7 +36,6 @@ RUN set -ex; \
     # Default plugins.
     elasticsearch-plugin install --batch ingest-user-agent; \
     elasticsearch-plugin install --batch ingest-geoip; \
-    rm -rf /usr/share/elasticsearch/modules/x-pack; \
     \
     chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
     \
