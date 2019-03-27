@@ -1,7 +1,7 @@
 -include env_make
 
-ELASTICSEARCH_VER ?= 6.3.2
-OPENJDK_VER ?= 8.171.11
+ELASTICSEARCH_VER ?= 6.7.0
+OPENJDK_VER ?= 8.191.12
 
 # Remove minor version from tag
 TAG ?= $(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
