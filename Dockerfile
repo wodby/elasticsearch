@@ -1,6 +1,6 @@
-ARG OPENJDK_VER
+ARG BASE_IMAGE_TAG
 
-FROM wodby/openjdk:${OPENJDK_VER}-jre
+FROM wodby/alpine:${BASE_IMAGE_TAG}
 
 ARG ELASTICSEARCH_VER
 
@@ -8,9 +8,19 @@ ENV ELASTICSEARCH_VER="${ELASTICSEARCH_VER}" \
     ES_JAVA_OPTS="-Xms1g -Xmx1g" \
     ES_TMPDIR="/tmp" \
     \
-    PATH="/usr/share/elasticsearch/bin:${PATH}"
+    LANG="C.UTF-8" \
+    JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk/jre" \
+    \
+    PATH="${PATH}:/usr/share/elasticsearch/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin"
 
 RUN set -ex; \
+    { \
+		echo '#!/bin/sh'; \
+		echo 'set -e'; \
+		echo; \
+		echo 'dirname "$(dirname "$(readlink -f "$(which javac || which java)")")"'; \
+	} > /usr/local/bin/docker-java-home; \
+	chmod +x /usr/local/bin/docker-java-home; \
     \
     addgroup -g 1000 -S elasticsearch; \
     adduser -u 1000 -D -S -s /bin/bash -G elasticsearch elasticsearch; \
@@ -18,6 +28,7 @@ RUN set -ex; \
     \
     apk add --update --no-cache -t .es-rundeps \
         make \
+        openjdk8-jre \
         su-exec \
         util-linux; \
     \

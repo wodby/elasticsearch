@@ -1,10 +1,18 @@
 -include env_make
 
 ELASTICSEARCH_VER ?= 6.7.0
-OPENJDK_VER ?= 8.191.12
+ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | sed -E "s/^([0-9]+\.[0-9]+)\..*/\1/")
+
+ALPINE_VER ?= 3.9
 
 # Remove minor version from tag
-TAG ?= $(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
+TAG ?= $(ELASTICSEARCH_MINOR_VER)
+
+ifeq ($(BASE_IMAGE_STABILITY_TAG),)
+    BASE_IMAGE_TAG := $(ALPINE_VER)
+else
+    BASE_IMAGE_TAG := $(ALPINE_VER)-$(BASE_IMAGE_STABILITY_TAG)
+endif
 
 ifneq ($(STABILITY_TAG),)
     ifneq ($(TAG),latest)
@@ -13,7 +21,7 @@ ifneq ($(STABILITY_TAG),)
 endif
 
 REPO = wodby/elasticsearch
-NAME = elasticsearch-$(ELASTICSEARCH_VER)
+NAME = elasticsearch-$(ELASTICSEARCH_MINOR_VER)
 
 .PHONY: build test push shell run start stop logs clean release
 
@@ -21,7 +29,7 @@ default: build
 
 build:
 	docker build -t $(REPO):$(TAG) \
-		--build-arg OPENJDK_VER=$(OPENJDK_VER) \
+		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
 		--build-arg ELASTICSEARCH_VER=$(ELASTICSEARCH_VER) \
 		./
 

@@ -4,6 +4,9 @@ services:
   - docker
 
 env:
+  global:
+    - ALPINE_VER=3.9
+    - BASE_IMAGE_STABILITY_TAG=2.2.1
   matrix:
     - ELASTICSEARCH_VER=6.7.0 TAGS=6.7,6,latest
     - ELASTICSEARCH_VER=6.6.2 TAGS=6.6
