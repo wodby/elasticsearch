@@ -29,6 +29,7 @@ RUN set -ex; \
     apk add --update --no-cache -t .es-rundeps \
         make \
         openjdk8-jre \
+        so:libnss3.so \
         su-exec \
         util-linux; \
     \
