@@ -34,8 +34,11 @@ RUN set -ex; \
     \
     apk add --no-cache -t .es-build-deps gnupg openssl; \
     \
+    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-${ELASTICSEARCH_VER}"; \
+    [[ $(compare_semver "${ELASTICSEARCH_VER}" "7.0") == 0 ]] && es_url="${es_url}-linux-x86_64"; \
+    es_url="${es_url}.tar.gz"; \
+    \
     cd /tmp; \
-    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-${ELASTICSEARCH_VER}.tar.gz"; \
     curl -o es.tar.gz -Lskj "${es_url}"; \
     curl -o es.tar.gz.asc -Lskj "${es_url}.asc"; \
     GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
