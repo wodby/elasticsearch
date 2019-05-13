@@ -27,10 +27,10 @@ Supported tags and respective `Dockerfile` links:
 | --------------------------------------------- | ----------------------- | ----------- |
 | `ES_BOOTSTRAP_MEMORY_LOCK`                    | `true`                  |             |
 | `ES_CLUSTER_NAME`                             | `elasticsearch-default` |             |
-| `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     |             |
+| `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     | 6.x only    |
 | `ES_HTTP_CORS_ALLOW_ORIGIN`                   | `*`                     |             |
 | `ES_HTTP_CORS_ENABLED`                        | `true`                  |             |
-| `ES_HTTP_ENABLED`                             | `true`                  |             |
+| `ES_HTTP_ENABLED`                             | `true`                  | 6.x only    |
 | `ES_JAVA_OPTS`                                | `-Xms1g -Xmx1g`         |             |
 | `ES_NETWORK_HOST`                             | `0.0.0.0`               |             |
 | `ES_NODE_DATA`                                | `true`                  |             |
