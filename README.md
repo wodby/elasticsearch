@@ -23,23 +23,24 @@ Supported tags and respective `Dockerfile` links:
 
 ## Environment Variables
 
-| Variable                                      | Default Value           | Description |
-| --------------------------------------------- | ----------------------- | ----------- |
-| `ES_BOOTSTRAP_MEMORY_LOCK`                    | `true`                  |             |
-| `ES_CLUSTER_NAME`                             | `elasticsearch-default` |             |
-| `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     | 6.x only    |
-| `ES_HTTP_CORS_ALLOW_ORIGIN`                   | `*`                     |             |
-| `ES_HTTP_CORS_ENABLED`                        | `true`                  |             |
-| `ES_HTTP_ENABLED`                             | `true`                  | 6.x only    |
-| `ES_JAVA_OPTS`                                | `-Xms1g -Xmx1g`         |             |
-| `ES_NETWORK_HOST`                             | `0.0.0.0`               |             |
-| `ES_NODE_DATA`                                | `true`                  |             |
-| `ES_NODE_INGEST`                              | `true`                  |             |
-| `ES_NODE_MASTER`                              | `true`                  |             |
-| `ES_NODE_MAX_LOCAL_STORAGE_NODES`             | `1`                     |             |
+| Variable                                      | Default Value           | Description                                    |
+| --------------------------------------------- | ----------------------- | -----------                                    |
+| `ES_BOOTSTRAP_MEMORY_LOCK`                    | `true`                  |                                                |
+| `ES_CLUSTER_NAME`                             | `elasticsearch-default` |                                                |
+| `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     | 6.x only                                       |
+| `ES_HTTP_CORS_ALLOW_ORIGIN`                   | `*`                     |                                                |
+| `ES_HTTP_CORS_ENABLED`                        | `true`                  |                                                |
+| `ES_HTTP_ENABLED`                             | `true`                  | 6.x only                                       |
+| `ES_JAVA_OPTS`                                | `-Xms1g -Xmx1g`         |                                                |
+| `ES_NETWORK_HOST`                             | `0.0.0.0`               | Default for 6.x                                |
+| `ES_NETWORK_HOST`                             | `127.0.0.1`             | Default for 7.x                                |
+| `ES_NODE_DATA`                                | `true`                  |                                                |
+| `ES_NODE_INGEST`                              | `true`                  |                                                |
+| `ES_NODE_MASTER`                              | `true`                  |                                                |
+| `ES_NODE_MAX_LOCAL_STORAGE_NODES`             | `1`                     |                                                |
 | `ES_PLUGINS_INSTALL`                          |                         | Install specified plugins (separated by comma) |
-| `ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH` |                         |             |
-| `ES_SHARD_ALLOCATION_AWARENESS_ATTR`          |                         |             |
+| `ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH` |                         |                                                |
+| `ES_SHARD_ALLOCATION_AWARENESS_ATTR`          |                         |                                                |
 
 ## Orchestration Actions
 
