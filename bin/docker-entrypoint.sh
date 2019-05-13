@@ -12,14 +12,12 @@ fi
 
 install_plugins() {
     if [[ -n "${ES_PLUGINS_INSTALL}" ]]; then
-       orig_ifs=$IFS
-       IFS=','
-       for plugin in "${ES_PLUGINS_INSTALL}"; do
-          if ! elasticsearch-plugin list | grep -qs ${plugin}; then
-             yes | elasticsearch-plugin install --batch ${plugin}
+       IFS=',' read -r -a plugins <<< "${ES_PLUGINS_INSTALL}"
+       for plugin in "${plugins[@]}"; do
+          if ! elasticsearch-plugin list | grep -qs "${plugin}"; then
+             yes | elasticsearch-plugin install --batch "${plugin}"
           fi
        done
-       IFS="${orig_ifs}"
     fi
 }
 
