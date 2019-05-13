@@ -8,8 +8,8 @@ env:
   - ALPINE_VER=3.9
   - BASE_IMAGE_STABILITY_TAG=2.2.3
   matrix:
-  - ELASTICSEARCH_VER=6.7.2 TAGS=6.7,6,latest
-  - ELASTICSEARCH_VER=5.6.16 TAGS=5.6,5
+  - ELASTICSEARCH_VER=7.0.1 TAGS=7.0,7,latest
+  - ELASTICSEARCH_VER=6.7.2 TAGS=6.7,6
 
 script:
 - travis_retry make && make test
