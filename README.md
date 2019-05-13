@@ -32,8 +32,7 @@ Supported tags and respective `Dockerfile` links:
 | `ES_HTTP_CORS_ENABLED`                        | `true`                  |                                                |
 | `ES_HTTP_ENABLED`                             | `true`                  | 6.x only                                       |
 | `ES_JAVA_OPTS`                                | `-Xms1g -Xmx1g`         |                                                |
-| `ES_NETWORK_HOST`                             | `0.0.0.0`               | Default for 6.x                                |
-| `ES_NETWORK_HOST`                             | `127.0.0.1`             | Default for 7.x                                |
+| `ES_NETWORK_HOST`                             | `0.0.0.0`               |                                                |
 | `ES_NODE_DATA`                                | `true`                  |                                                |
 | `ES_NODE_INGEST`                              | `true`                  |                                                |
 | `ES_NODE_MASTER`                              | `true`                  |                                                |
@@ -41,6 +40,7 @@ Supported tags and respective `Dockerfile` links:
 | `ES_PLUGINS_INSTALL`                          |                         | Install specified plugins (separated by comma) |
 | `ES_SHARD_ALLOCATION_AWARENESS_ATTR_FILEPATH` |                         |                                                |
 | `ES_SHARD_ALLOCATION_AWARENESS_ATTR`          |                         |                                                |
+| `ES_TRANSPORT_HOST`                           | `localhost`             |                                                |
 
 ## Orchestration Actions
 

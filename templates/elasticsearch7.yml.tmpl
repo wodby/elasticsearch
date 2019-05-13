@@ -7,10 +7,13 @@ node:
   data: {{ getenv "ES_NODE_DATA" "true" }}
   ingest: {{ getenv "ES_NODE_INGEST" "true" }}
   max_local_storage_nodes: {{ getenv "ES_NODE_MAX_LOCAL_STORAGE_NODES" "1" }}
-network.host: {{ getenv "ES_NETWORK_HOST" "127.0.0.1" }}
+network.host: {{ getenv "ES_NETWORK_HOST" "0.0.0.0" }}
 
 bootstrap:
   memory_lock: {{ getenv "ES_BOOTSTRAP_MEMORY_LOCK" "true" }}
+
+transport:
+  host: {{ getenv "ES_TRANSPORT_HOST" "localhost" }}
 
 http:
   compression: {{ getenv "ES_HTTP_COMPRESSION" "true" }}
