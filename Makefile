@@ -1,6 +1,6 @@
 -include env_make
 
-ELASTICSEARCH_VER ?= 7.0.1
+ELASTICSEARCH_VER ?= 7.1.0
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 ALPINE_VER ?= 3.9
