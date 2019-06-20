@@ -9,7 +9,7 @@ env:
   - BASE_IMAGE_STABILITY_TAG=2.2.3
   matrix:
   - ELASTICSEARCH_VER=7.1.1 TAGS=7.1,7,latest
-  - ELASTICSEARCH_VER=6.8.0 TAGS=6.8,6
+  - ELASTICSEARCH_VER=6.8.1 TAGS=6.8,6
 
 script:
 - travis_retry make && make test
