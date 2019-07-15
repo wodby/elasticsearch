@@ -6,7 +6,7 @@ services:
 env:
   global:
   - ALPINE_VER=3.9
-  - BASE_IMAGE_STABILITY_TAG=2.3.0
+  - BASE_IMAGE_STABILITY_TAG=2.3.1
   matrix:
   - ELASTICSEARCH_VER=7.2.0 TAGS=7.2,7,latest
   - ELASTICSEARCH_VER=6.8.1 TAGS=6.8,6
