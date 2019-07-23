@@ -3,16 +3,8 @@
 ELASTICSEARCH_VER ?= 7.2.0
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
-ALPINE_VER ?= 3.9
-
 # Remove minor version from tag
 TAG ?= $(ELASTICSEARCH_MINOR_VER)
-
-ifeq ($(BASE_IMAGE_STABILITY_TAG),)
-    BASE_IMAGE_TAG := $(ALPINE_VER)
-else
-    BASE_IMAGE_TAG := $(ALPINE_VER)-$(BASE_IMAGE_STABILITY_TAG)
-endif
 
 ifneq ($(STABILITY_TAG),)
     ifneq ($(TAG),latest)
@@ -28,10 +20,7 @@ NAME = elasticsearch-$(ELASTICSEARCH_MINOR_VER)
 default: build
 
 build:
-	docker build -t $(REPO):$(TAG) \
-		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
-		--build-arg ELASTICSEARCH_VER=$(ELASTICSEARCH_VER) \
-		./
+	docker build -t $(REPO):$(TAG) --build-arg ELASTICSEARCH_VER=$(ELASTICSEARCH_VER) ./
 
 test:
 	cd ./tests && IMAGE=$(REPO):$(TAG) NAME=$(NAME) ./run.sh

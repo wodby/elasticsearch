@@ -12,7 +12,7 @@
 Overview:
 
 * All images are based on Alpine Linux
-* Base image: [wodby/alpine](https://github.com/wodby/alpine)
+* Base image: [adoptopenjdk/openjdk11](https://hub.docker.com/r/adoptopenjdk/openjdk11)
 * [TravisCI builds](https://travis-ci.org/wodby/elasticsearch) 
 * [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
 

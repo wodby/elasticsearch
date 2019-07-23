@@ -1,6 +1,4 @@
-ARG BASE_IMAGE_TAG
-
-FROM wodby/alpine:${BASE_IMAGE_TAG}
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 ARG ELASTICSEARCH_VER
 
@@ -9,9 +7,8 @@ ENV ELASTICSEARCH_VER="${ELASTICSEARCH_VER}" \
     ES_TMPDIR="/tmp" \
     \
     LANG="C.UTF-8" \
-    JAVA_HOME="/usr/lib/jvm/java-1.8-openjdk/jre" \
     \
-    PATH="${PATH}:/usr/share/elasticsearch/bin:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin"
+    PATH="${PATH}:/usr/share/elasticsearch/bin"
 
 RUN set -ex; \
     { \
@@ -27,14 +24,23 @@ RUN set -ex; \
     echo "PS1='\w\$ '" >> /home/elasticsearch/.bashrc; \
     \
     apk add --update --no-cache -t .es-rundeps \
+        bash \
         make \
-        openjdk8-jre \
+        curl \
         su-exec \
         util-linux; \
     \
-    apk add --no-cache -t .es-build-deps gnupg openssl; \
+    apk add --no-cache -t .es-build-deps gnupg openssl git; \
     \
-    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-${ELASTICSEARCH_VER}"; \
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"; \
+    wget -qO- "${gotpl_url}" | tar xz -C /usr/local/bin; \
+    git clone https://github.com/wodby/alpine /tmp/alpine; \
+    cd /tmp/alpine; \
+    latest=$(git describe --abbrev=0 --tags); \
+    git checkout "${latest}"; \
+    mv /tmp/alpine/bin/* /usr/local/bin; \
+    \
+    es_url="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VER}"; \
     [[ $(compare_semver "${ELASTICSEARCH_VER}" "7.0") == 0 ]] && es_url="${es_url}-linux-x86_64"; \
     es_url="${es_url}.tar.gz"; \
     \
