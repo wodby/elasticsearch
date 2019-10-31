@@ -5,7 +5,7 @@ services:
 
 env:
   matrix:
-  - ELASTICSEARCH_VER=7.4.1 TAGS=7.4,7,latest
+  - ELASTICSEARCH_VER=7.4.2 TAGS=7.4,7,latest
   - ELASTICSEARCH_VER=6.8.4 TAGS=6.8,6
 
 script:
