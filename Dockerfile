@@ -30,7 +30,7 @@ RUN set -ex; \
         su-exec \
         util-linux; \
     \
-    apk add --no-cache -t .es-build-deps gnupg openssl git; \
+    apk add --no-cache -t .es-build-deps gnupg openssl git tar; \
     \
     gotpl_url="https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"; \
     wget -qO- "${gotpl_url}" | tar xz -C /usr/local/bin; \
@@ -50,7 +50,13 @@ RUN set -ex; \
     GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/es.tar.gz.asc /tmp/es.tar.gz; \
     \
     mkdir -p /usr/share/elasticsearch/data /usr/share/elasticsearch/logs; \
-    tar zxf es.tar.gz --strip-components=1 -C /usr/share/elasticsearch; \
+    # https://github.com/elastic/elasticsearch/issues/49417#issuecomment-557265783
+    if tar tf es.tar.gz | head -n 1 | grep -q '^./$'; then \
+        STRIP_COMPONENTS_COUNT=2; \
+    else \
+        STRIP_COMPONENTS_COUNT=1; \
+    fi; \
+    tar zxf es.tar.gz --strip-components=$STRIP_COMPONENTS_COUNT -C /usr/share/elasticsearch; \
     \
     chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
     \
