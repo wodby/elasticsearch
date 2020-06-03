@@ -6,7 +6,7 @@ services:
 env:
   matrix:
   - ELASTICSEARCH_VER=7.7.1 TAGS=7.7,7,latest
-  - ELASTICSEARCH_VER=6.8.9 TAGS=6.8,6
+  - ELASTICSEARCH_VER=6.8.10 TAGS=6.8,6
 
 script:
 - travis_retry make && make test
