@@ -1,6 +1,6 @@
 # Elasticsearch Docker Container Image
 
-[![Build Status](https://travis-ci.org/wodby/elasticsearch.svg?branch=master)](https://travis-ci.org/wodby/elasticsearch)
+[![Build Status](https://github.com/wodby/elasticsearch/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/elasticsearch/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/elasticsearch.svg)](https://microbadger.com/images/wodby/elasticsearch)
@@ -11,15 +11,15 @@
 
 Overview:
 
-* All images are based on Alpine Linux
-* Base image: [adoptopenjdk/openjdk11](https://hub.docker.com/r/adoptopenjdk/openjdk11)
-* [TravisCI builds](https://travis-ci.org/wodby/elasticsearch) 
-* [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
+- All images based on Alpine Linux
+- Base image: [adoptopenjdk/openjdk11](https://hub.docker.com/r/adoptopenjdk/openjdk11)
+- [GitHub actions builds](https://github.com/wodby/elasticsearch/actions)
+- [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.10`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-* `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `7.10`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 
 ## Environment Variables
 
