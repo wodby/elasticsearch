@@ -15,8 +15,8 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./.github/actions
       with:
-        version: 7.10.2
-        tags: 7.10,7,latest
+        version: 7.11.0
+        tags: 7.11,7,latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
   elasticsearch-6:
