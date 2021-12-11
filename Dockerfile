@@ -58,6 +58,7 @@ RUN set -ex; \
     fi; \
     tar zxf es.tar.gz --strip-components=$STRIP_COMPONENTS_COUNT -C /usr/share/elasticsearch; \
     \
+    rm -rf /usr/share/elasticsearch/modules/x-pack-ml/platform/linux-x86_64; \
     chown -R elasticsearch:elasticsearch /usr/share/elasticsearch; \
     \
     apk del --purge .es-build-deps; \
