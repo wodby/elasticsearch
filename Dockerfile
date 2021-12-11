@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-jre
+FROM wodby/openjdk:11-jre-alpine
 
 ARG ELASTICSEARCH_VER
 

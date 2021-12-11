@@ -3,7 +3,6 @@
 [![Build Status](https://github.com/wodby/elasticsearch/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/elasticsearch/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/elasticsearch.svg)](https://hub.docker.com/r/wodby/elasticsearch)
-[![Docker Layers](https://images.microbadger.com/badges/image/wodby/elasticsearch.svg)](https://microbadger.com/images/wodby/elasticsearch)
 
 ## Docker Images
 
@@ -12,7 +11,7 @@
 Overview:
 
 - All images based on Alpine Linux
-- Base image: [adoptopenjdk/openjdk11](https://hub.docker.com/r/adoptopenjdk/openjdk11)
+- Base image: [wodby/openjdk](https://github.com/wodby/openjdk)
 - [GitHub actions builds](https://github.com/wodby/elasticsearch/actions)
 - [Docker Hub](https://hub.docker.com/r/wodby/elasticsearch)
 
