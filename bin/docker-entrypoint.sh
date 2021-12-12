@@ -46,7 +46,7 @@ process_templates() {
 # es.cgroups.hierarchy.override. Therefore, we set this value here so
 # that cgroup statistics are available for the container this process
 # will run in.
-export ES_JAVA_OPTS="-Des.cgroups.hierarchy.override=/ $ES_JAVA_OPTS"
+export ES_JAVA_OPTS="-Des.cgroups.hierarchy.override=/ $ES_JAVA_OPTS -Dlog4j2.formatMsgNoLookups=true"
 
 # Generate random node name if not set.
 if [[ -z "${ES_NODE_NAME}" ]]; then
