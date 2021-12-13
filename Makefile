@@ -1,6 +1,6 @@
 -include env_make
 
-ELASTICSEARCH_VER ?= 7.16.0
+ELASTICSEARCH_VER ?= 7.16.1
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 # Remove minor version from tag
