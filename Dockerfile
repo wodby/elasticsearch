@@ -1,4 +1,6 @@
-FROM wodby/openjdk:11-jre-alpine
+ARG BASE_IMAGE_TAG
+
+FROM wodby/openjdk:${BASE_IMAGE_TAG}
 
 ARG ELASTICSEARCH_VER
 

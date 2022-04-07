@@ -7,11 +7,8 @@ inputs:
   tags:
     description: image tags
     required: true
-  username:
-    description: docker username
-    required: true
-  password:
-    description: docker password
+  alpine_ver:
+    description: alpine version
     required: true
 runs:
   using: "composite"
@@ -19,9 +16,8 @@ runs:
   - name: Build image
     env:
       ELASTICSEARCH_VER: ${{ inputs.version }}
-      DOCKER_USERNAME: ${{ inputs.username }}
-      DOCKER_PASSWORD: ${{ inputs.password }}
       TAGS: ${{ inputs.tags }}
+      ALPINE_VER: ${{ inputs.alpine_ver }}
     run: |
       set -e
       make

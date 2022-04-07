@@ -8,6 +8,12 @@ on:
     tags:
     - '*'
 
+env:
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  ELASTICSEARCH7: '7.17.2'
+  ELASTICSEARCH6: '6.8.23'
+
 jobs:
   elasticsearch-7:
     runs-on: ubuntu-latest
@@ -15,17 +21,33 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./.github/actions
       with:
-        version: '7.17.2'
-        tags: 7.17,7,latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        version: ${{ env.ELASTICSEARCH7 }}
+        tags: 7.17-alpine3.15,7-alpine3.15,7.17-alpine,7-alpine,7.17,7,alpine3.15,alpine,latest
+        alpine_ver: 3.15
   elasticsearch-6:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: ./.github/actions
       with:
-        version: '6.8.23'
-        tags: 6.8,6
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        version: ${{ env.ELASTICSEARCH6 }}
+        tags: 6.8-alpine3.15,6-alpine3.15,6.8-alpine,6-alpine,6.8,6
+        alpine_ver: 3.15
+  elasticsearch-7-alpine313:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions
+      with:
+        version: ${{ env.ELASTICSEARCH7 }}
+        tags: 7.17-alpine3.13,7-alpine3.13,alpine3.13
+        alpine_ver: 3.13
+  elasticsearch-6-alpine313:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/actions
+      with:
+        version: ${{ env.ELASTICSEARCH6 }}
+        tags: 6.8-alpine3.13,6-alpine3.13
+        alpine_ver: 3.13

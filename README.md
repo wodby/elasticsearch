@@ -17,13 +17,15 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-- `7.17`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-- `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `7.17-alpine3.15`, `7-alpine3.15`, `7.17-alpine`, `7-alpine`, `alpine3.15`, `alpine`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `6.8-alpine3.15`, `6-alpine3.15`, `6.8-alpine`, `6-alpine`, `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `7.17-alpine3.13`, `7-alpine3.13`, `alpine3.13` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
+- `6.8-alpine3.13`, `6-alpine3.13` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 
 ## Environment Variables
 
 | Variable                                      | Default Value           | Description                                    |
-| --------------------------------------------- | ----------------------- | -----------                                    |
+|-----------------------------------------------|-------------------------|------------------------------------------------|
 | `ES_BOOTSTRAP_MEMORY_LOCK`                    | `true`                  |                                                |
 | `ES_CLUSTER_NAME`                             | `elasticsearch-default` |                                                |
 | `ES_DISCOVERY_ZEN_MINIMUM_MASTER_NODES`       | `1`                     | 6.x only                                       |
