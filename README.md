@@ -19,8 +19,6 @@ Supported tags and respective `Dockerfile` links:
 
 - `7.17`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 - `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-- `7.17-alpine3.13`, `7-alpine3.13`, `alpine3.13` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-- `6.8-alpine3.13`, `6-alpine3.13` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 
 ## Environment Variables
 

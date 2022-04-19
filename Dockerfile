@@ -1,6 +1,6 @@
 ARG BASE_IMAGE_TAG
 
-FROM wodby/openjdk:${BASE_IMAGE_TAG}
+FROM eclipse-temurin:${BASE_IMAGE_TAG}
 
 ARG ELASTICSEARCH_VER
 

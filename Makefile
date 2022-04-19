@@ -4,8 +4,7 @@ ELASTICSEARCH_VER ?= 7.17.2
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 OPENJDK_VER ?= 11
-ALPINE_VER ?= 3.15
-BASE_IMAGE_TAG ?= $(OPENJDK_VER)-jre-alpine$(ALPINE_VER)
+BASE_IMAGE_TAG ?= $(OPENJDK_VER)-jre-alpine
 
 # Remove minor version from tag
 TAG ?= $(ELASTICSEARCH_MINOR_VER)
