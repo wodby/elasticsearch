@@ -19,7 +19,7 @@ jobs:
     - uses: actions/checkout@v2
     - uses: ./.github/actions
       with:
-        version: '7.17.8'
+        version: '7.17.9'
         tags: 7.17,7,latest
   elasticsearch-6:
     runs-on: ubuntu-latest
