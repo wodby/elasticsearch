@@ -21,11 +21,3 @@ jobs:
       with:
         version: '7.17.14'
         tags: 7.17,7,latest
-  elasticsearch-6:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: ./.github/actions
-      with:
-        version: '6.8.23'
-        tags: 6.8,6

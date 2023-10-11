@@ -6,7 +6,9 @@
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/elasticsearch:7-X.X.X`) which correspond to [git tags](https://github.com/wodby/elasticsearch/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/elasticsearch:7-X.X.X`) which correspond
+to [git tags](https://github.com/wodby/elasticsearch/releases). We strongly recommend using images only with stability
+tags.
 
 Overview:
 
@@ -18,7 +20,6 @@ Overview:
 Supported tags and respective `Dockerfile` links:
 
 - `7.17`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
-- `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/elasticsearch/tree/master/Dockerfile)
 
 ## Environment Variables
 
@@ -44,6 +45,7 @@ Supported tags and respective `Dockerfile` links:
 ## Orchestration Actions
 
 Usage:
+
 ```
 make COMMAND [params ...]
  
@@ -59,4 +61,5 @@ default params values:
 
 ## Deployment
 
-Deploy Elasticsearch with Kibana to your own server via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com/stacks/elasticsearch).
+Deploy Elasticsearch with Kibana to your own server
+via [![Wodby](https://www.google.com/s2/favicons?domain=wodby.com) Wodby](https://wodby.com/stacks/elasticsearch).
