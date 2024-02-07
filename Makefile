@@ -1,6 +1,6 @@
 -include env_make
 
-ELASTICSEARCH_VER ?= 7.17.17
+ELASTICSEARCH_VER ?= 7.17.18
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 OPENJDK_VER ?= 11
