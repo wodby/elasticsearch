@@ -1,5 +1,8 @@
 -include env_make
 
+# Accept legacy build arguments during the image revision transition.
+IMAGE_REVISION ?= $(STABILITY_TAG)
+
 ELASTICSEARCH_VER ?= 7.17.29
 ELASTICSEARCH_MINOR_VER=$(shell echo "${ELASTICSEARCH_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
@@ -9,9 +12,11 @@ BASE_IMAGE_TAG ?= $(OPENJDK_VER)-jre-alpine
 # Remove minor version from tag
 TAG ?= $(ELASTICSEARCH_MINOR_VER)
 
-ifneq ($(STABILITY_TAG),)
+ifneq ($(IMAGE_REVISION),)
     ifneq ($(TAG),latest)
-        override TAG := $(TAG)-$(STABILITY_TAG)
+        override TAG := $(TAG)-$(IMAGE_REVISION)
+    else
+        override TAG := $(IMAGE_REVISION)
     endif
 endif
 
