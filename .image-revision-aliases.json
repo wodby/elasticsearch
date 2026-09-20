@@ -1,0 +1,20 @@
+{
+  "schema": 1,
+  "image": "wodby/elasticsearch",
+  "versions": [
+    {
+      "version": {
+        "job": "elasticsearch-7"
+      },
+      "variants": [
+        {
+          "short": [
+            "{minor}",
+            "{major}"
+          ],
+          "full": "{version}"
+        }
+      ]
+    }
+  ]
+}
